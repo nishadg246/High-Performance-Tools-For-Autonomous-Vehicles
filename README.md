@@ -1,8 +1,7 @@
-## Welcome to GitHub Pages
+## High Performance Video Processing Suite For Autonomous Vehicles
+Nishad Gothoskar and Cyrus Tabrizi
 
-You can use the [editor on GitHub](https://github.com/nishadg246/418TermProject/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+We are going to build a set of high performance, highly parallel tools for doing realtime video processing primarily to be used to analyze autonomous vehicle data. Many operations for successful automation of vehicles is dependent on realtime analysis of sensor data.  Our suite will create optimized versions of the neccessary analysis algorithms.
 
 ### Markdown
 
