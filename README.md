@@ -1,12 +1,17 @@
 ### High Performance Video Processing Suite For Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
-### Summary
 
-We are going to build a set of parallel visual-computing tools for doing realtime processing of autonomous vehicle sensor data. The ability to efficiently process multiple streams of RGB and depth data in realtime is critical to the improved safety and performance of autonomous vehicles. Our suite will create versions of these algorithms specifically optimized for parallel operation in this compute-constrained environment.
+## Summary
+We are going to build a set of high performance, highly parallel tools for doing realtime data processing primarily to be used to analyze autonomous vehicle data. Many operations for successful automation of vehicles is dependent on accurate realtime analysis.  Our suite will create optimized versions of a variety of the important algorithms needed in this analysis pipeline.
 
 
-### Dataset
+## Backround
+Autonomous vehicle sensors provide primarily spacial data like 360 depth data and video feeds.  The analysis of spacial data for operations like edge detection and optical flow as well as much of the preprocessing of this data before its fed into ML algorithms are highly parallelizable processes. Our project is to take advantage of this parallelism to improve the algorithms with regards to the important constraints of autonomous vehicles: cost, speed, ...
+
+The main set of algorithms we hope to work on are:
+
+ - Optical Flow: 
 
 
 
