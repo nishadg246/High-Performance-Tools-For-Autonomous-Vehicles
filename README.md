@@ -3,7 +3,7 @@ Nishad Gothoskar and Cyrus Tabrizi
 
 
 ## Summary
-We are going to build a set of high performance, highly parallel tools for doing realtime data processing primarily to be used to analyze autonomous vehicle data. Many operations for successful automation of vehicles is dependent on accurate realtime analysis.  Our suite will create optimized versions of a variety of the important algorithms needed in this analysis pipeline.
+We are going to build a set of parallel visual-computing tools for doing realtime processing of autonomous vehicle sensor data. The ability to efficiently process multiple streams of RGB and depth data in realtime is critical to the improved safety and performance of autonomous vehicles. Our suite will create versions of these algorithms specifically optimized for parallel operation in this compute-constrained environment.
 
 
 ## Backround
