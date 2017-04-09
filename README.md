@@ -1,9 +1,9 @@
-## High Performance Video Processing Suite For Autonomous Vehicles
+### High Performance Video Processing Suite For Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
-We are going to build a set of high performance, highly parallel tools for doing realtime video processing primarily to be used to analyze autonomous vehicle data. Many operations for successful automation of vehicles is dependent on realtime analysis of sensor data.  Our suite will create optimized versions of the neccessary analysis algorithms.
+We are going to build a set of high performance, highly parallel tools for doing realtime data processing primarily to be used to analyze autonomous vehicle data. Many operations for successful automation of vehicles is dependent on realtime analysis.  Our suite will create optimized versions of a variety of analysis algorithms.
 
-### Markdown
+## Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
