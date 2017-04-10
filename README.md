@@ -28,7 +28,7 @@ These algorithms will be packaged together to demonstrate their use in a fiction
 ## The Challenge
 Each of the low-level algorithms we plan to implement will feature a different set of  challenges. Some of these algorithms are inherently parallel but will require a clean and efficient implementation to minimize latency and achieve real-time performance. Others make it more difficult to exploit that parallelism by involving large chains of dependencies and will require additional cleverness to optimize for a GPU. The goal of applying our 15-418 learning to these algorithms in this way is to further our understanding of the algorithms themselves as well as our ability to write GPU-optimized code.
 
-##Resources
+## Resources
 We primarily intend to use the GPU’s in the GHC cluster but are considering using an NVIDIA Jetson TX1 to test these algorithms in a more constrained environment. We will also be writing the code from scratch but will refer to the documentation for the OpenCV and VisionWorks libraries to better understand the intended behavior of the algorithms themselves.
 The data set that we will use to test our processing pipeline on is a mirror of the Kitti dataset used in the Udacity Self-Driving Car Challenge 2017.  The dataset contains the following (captured and synchronized at 10Hz):
 
