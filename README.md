@@ -60,5 +60,3 @@ The code for vision pipeline will be written from scratch using CUDA.  We chose 
 - Thurs May 11th (3pm) -- Finalists announced, presentation time sign ups
 - Fri May 12th -- Parallelism Competition Day + Project Party / Final Report Due at 11:59pm
 
-
-```
