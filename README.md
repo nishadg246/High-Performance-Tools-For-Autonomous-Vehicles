@@ -3,6 +3,8 @@ Nishad Gothoskar and Cyrus Tabrizi
 
 <img src="images/screen1.png" alt="hi" class="inline"/>
 
+Naive CPU 50x50 pixel region matching across RGB images
+
 # Proposal
 
 ## Summary
