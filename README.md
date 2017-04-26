@@ -1,6 +1,7 @@
 ### High Performance Video Processing Suite For Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
+# Proposal
 
 ## Summary
 We are going to build a set of parallel visual-computing tools for doing realtime processing of autonomous vehicle sensor data. The ability to efficiently process multiple streams of video and depth data in real-time is critical to the improved safety and performance of autonomous vehicles. Our suite will create versions of these algorithms specifically optimized for parallel operation in this compute-constrained environment.
@@ -60,7 +61,7 @@ The code for vision pipeline will be written from scratch using CUDA.  We chose 
 - Thurs May 11th (3pm) -- Finalists announced, presentation time sign ups
 - Fri May 12th -- Parallelism Competition Day + Project Party / Final Report Due at 11:59pm
 
-### Checkpoint
+# Checkpoint
 
 ## Updated Schedule
 Tue April 25th (11:59pm) -- Project Checkpoint Report Due
