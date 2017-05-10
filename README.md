@@ -13,42 +13,44 @@ Figure 2: Picture of the KITTI mapping vehicle
 ## Major Challenges
 The main hurdles come from the massive amount of data that each LIDAR collection involves. The KITTI dataset provides complete sensor data at 10Hz and each LIDAR scan returns 100,000+ 3D points in an unsorted list. Even though the work we're doing on this data is highly parallelizable, most approaches for processing all this data are memory-constrained. The pipeline for SLAM is also very deep and involves a lot of different operations, everything from applying 3D transformations to points to clustering points to sampling normal distributions for each particle in the filter. 
 
-Deeply understanding the workload involved in doing SLAM effectively was crucial to our planning and implementation.
+Deeply understanding the workload involved in doing SLAM effectively was crucial to our planning and implementation. 
+
+For example, realizing that the LIDAR data is both precise and sparse was a reason for us to consider representing the map as a BVH-like tree structure instead of a voxel-based structure. Similarly, realizing that picking the best pose from the particle filter would involve observing the effects of small shifts informed how we decided to compute similarity scores.
 
 ## Quick summary of our SLAM algorithm
 The steps for SLAM are as follows:
--Initialize the particle filter
---Each particle represents a possible pose for the vehicle
---On the first time step, set every particle to (0,0,0,0,0,0)
+1. Initialize the particle filter
+..*Each particle represents a possible pose for the vehicle
+..*On the first time step, set every particle to (0,0,0,0,0,0)
 
--Retrieve the LIDAR data
---Each scan contains roughly 100,000+ points
+2. Retrieve the LIDAR data
+..*Each scan contains roughly 100,000+ points
 
--Retrieve the IMU and gyro data
---Remember! Relying only on IMU and gyro data introduces drift into our map.
+3. Retrieve the IMU and gyro data
+..*Remember! Relying only on IMU and gyro data introduces drift into our map.
 
--Retrieve the timing data
---The sensor measurements are recorded at roughly 10Hz
---We need to know the exact timing intervals to reduce error
+4. Retrieve the timing data
+..*The sensor measurements are recorded at roughly 10Hz
+..*We need to know the exact timing intervals to reduce error
 
--Offset each particle pose by the measured IMU and timing data
---We want the particles to be an estimate of where the vehicle currently is
+5. Offset each particle pose by the measured IMU and timing data
+..*We want the particles to be an estimate of where the vehicle currently is
 
--Offset each particle pose by a normal distribution
---We'd use an actual error distribution for the timers, IMU's etc. if we had one
---Instead, we approximate the error as being gaussian
+6. Offset each particle pose by a normal distribution
+..*We'd use an actual error distribution for the timers, IMU's etc. if we had one
+..*Instead, we approximate the error as being gaussian
 
--Now we use each particle pose to transform the LIDAR data back into the original reference frame
+7. Now we use each particle pose to transform the LIDAR data back into the original reference frame
 
--We compare each particle's transformed LIDAR data to the previous map and compute a similarity score
+8. We compare each particle's transformed LIDAR data to the previous map and compute a similarity score
 
--We search the score list and find the particle with the best score. This particle reflects our best estimate of the vehicle's true pose
+9. We search the score list and find the particle with the best score. This particle reflects our best estimate of the vehicle's true pose
 
--Using our best estimate of the vehicle pose, we merge the new LIDAR data with our previous map
+10. Using our best estimate of the vehicle pose, we merge the new LIDAR data with our previous map
 
--Generate a new particle filter by resampling the old particle filter, using their scores to bias the resampling towards the particles that were most accurate
+11. Generate a new particle filter by resampling the old particle filter, using their scores to bias the resampling towards the particles that were most accurate
 
--Repeat this process
+12. Repeat this process
 
 ## Preliminary Results
 The first step was learning the SLAM algorithm enough to first implement it all correctly from scratch. This is a necessary prerequisite to doing it in parallel. Since the problem is mostly the same in 1 dimension as it is in 3 dimensions, we first wrote a particle-based SLAM simulator in Python before moving to 3 dimensions and C++.
