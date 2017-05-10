@@ -22,25 +22,25 @@ For example, realizing that the LIDAR data is both precise and sparse was a reas
 ## Quick summary of our SLAM algorithm
 The steps for SLAM are as follows:
 1. Initialize the particle filter
-..*Each particle represents a possible pose for the vehicle
-..*On the first time step, set every particle to (0,0,0,0,0,0)
+  *Each particle represents a possible pose for the vehicle
+  *On the first time step, set every particle to (0,0,0,0,0,0)
 
 2. Retrieve the LIDAR data
-..*Each scan contains roughly 100,000+ points
+  *Each scan contains roughly 100,000+ points
 
 3. Retrieve the IMU and gyro data
-..*Remember! Relying only on IMU and gyro data introduces drift into our map.
+  *Remember! Relying only on IMU and gyro data introduces drift into our map.
 
 4. Retrieve the timing data
-..*The sensor measurements are recorded at roughly 10Hz
-..*We need to know the exact timing intervals to reduce error
+  *The sensor measurements are recorded at roughly 10Hz
+  *We need to know the exact timing intervals to reduce error
 
 5. Offset each particle pose by the measured IMU and timing data
-..*We want the particles to be an estimate of where the vehicle currently is
+  *We want the particles to be an estimate of where the vehicle currently is
 
 6. Offset each particle pose by a normal distribution
-..*We'd use an actual error distribution for the timers, IMU's etc. if we had one
-..*Instead, we approximate the error as being gaussian
+  *We'd use an actual error distribution for the timers, IMU's etc. if we had one
+  *Instead, we approximate the error as being gaussian
 
 7. Now we use each particle pose to transform the LIDAR data back into the original reference frame
 
