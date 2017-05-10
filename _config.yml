@@ -1,1 +1,3 @@
 theme: jekyll-theme-cayman
+title: High Performance Tools for Autonomous Vehicles
+description: A parallel SLAM implementation for the 15-418 Parallelism Competition (Spring 2017)
