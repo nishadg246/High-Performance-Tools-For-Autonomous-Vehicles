@@ -43,14 +43,16 @@ class graphics_1D:
 		c = Circle(self.getPoint(x,y),r)
 		if(fill != None):
 			c.setFill(fill)
-		c.setOutline(outline)
+		if(outline != None):
+			c.setOutline(outline)
 		c.draw(self.win)
 
 	def drawRectangleFromPoints(self,p0,p1,fill=None,outline='black'):
 		r = Rectangle(p0,p1)
 		if(fill != None):
 			r.setFill(fill)
-		r.setOutline(outline)
+		if(outline != None):
+			r.setOutline(outline)
 		r.draw(self.win)
 
 	def drawRectangle(self,x0,y0,x1,y1,fill=None,outline='black'):
@@ -60,26 +62,43 @@ class graphics_1D:
 		l = self.getLine(x0,y0,x1,y1,width,fill)
 		l.draw(self.win)
 
-	def drawText(self,x,y,text,fontSize = 10):
+	def drawText(self,x,y,text,fontSize = 5):
 		label = Text(self.getPoint(x,y),text)
 		label.setSize(fontSize)
 		label.draw(self.win)
 
-	def drawWall(self,x,fill='black'):
-		h = 80
-		self.drawLine(x, h/2, x, -h/2,3,fill)
-
-		fontSize = 20
+	def drawWall(self,x,h=80,w=3,fontSize=20,fill='black'):
+		self.drawLine(x, h/2, x, -h/2,w,fill)
 		self.drawText(x,(h/2) + 2 + (fontSize/2),str(x),fontSize)
 
-	def drawObstacles(self,obs):
+	def drawObstacles(self,obs,h=80,w=3,fontSize=20,fill='black'):
 		for val in obs:
-			self.drawWall(val)
+			self.drawWall(val,h,w,fontSize,fill)
+
+	def drawAxisMarkers(self):
+		markers = []
+		for i in xrange(10):
+			markers += [i*10]
+
+		for i in xrange(1,10):
+			markers += [-i*10]
+
+		for mark in markers:
+			self.drawWall(mark,h=2,w=1,fontSize=5)
 
 	def drawBackground(self,obs):
 		self.drawRectangleFromPoints(Point(0,0),Point(self.win_width,self.win_height),'white','white')
 		self.drawLine(-self.win_width/2,0,self.win_width/2,0)
 		self.drawObstacles(obs)
+		#self.drawAxisMarkers()
+
+	def drawBackgroundRefresh(self,obs):
+		p0 = self.getPoint(obs[0]-20,-self.win_height/2)
+		p1 = self.getPoint(obs[1]+20,self.win_height/2)
+		self.drawRectangleFromPoints(p0,p1,'white','white')
+		self.drawLine(-self.win_width/2,0,self.win_width/2,0)
+		self.drawObstacles(obs)
+		#self.drawAxisMarkers()
 
 	def drawRobot(self,pos):
 		self.drawCircle(pos[0],0,5,outline='red')
