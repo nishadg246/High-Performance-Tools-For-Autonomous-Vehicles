@@ -71,15 +71,15 @@ The code for vision pipeline will be written from scratch using CUDA.  We chose 
 ## Checkpoint
 
 ### Updated Schedule
-Tue April 25th (11:59pm) -- Project Checkpoint Report Due
-Fri Apr 28th - Finish preliminary GPU implementation for each algorithm
-Mon May 1st - Complete first full GPU vs CPU benchmark
-Wed May 3rd - Push CPU and GPU versions closer to real-time
-Sat May 6th - Combine algorithms to build pipeline
-Tue, May 9th -- Final performance tuning for pipeline, prepare video of demo
-Wed May 10th (9:00am) -- Project pages are made available to judges for finalist selection.
-Thurs May 11th (3pm) -- Finalists announced, presentation time sign ups
-Fri May 12th -- Parallelism Competition Day + Project Party / Final Report Due at 11:59pm
+- Tue April 25th (11:59pm) -- Project Checkpoint Report Due
+- Fri Apr 28th - Finish preliminary GPU implementation for each algorithm
+- Mon May 1st - Complete first full GPU vs CPU benchmark
+- Wed May 3rd - Push CPU and GPU versions closer to real-time
+- Sat May 6th - Combine algorithms to build pipeline
+- Tue, May 9th -- Final performance tuning for pipeline, prepare video of demo
+- Wed May 10th (9:00am) -- Project pages are made available to judges for finalist selection.
+- Thurs May 11th (3pm) -- Finalists announced, presentation time sign ups
+- Fri May 12th -- Parallelism Competition Day + Project Party / Final Report Due at 11:59pm
 
 ### Checkpoint Update
 
