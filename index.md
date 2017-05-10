@@ -1,6 +1,8 @@
 ### High Performance Video Processing Suite For Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
+[Proposal](proposal)
+
 <img src="images/screen1.png" alt="hi" class="inline"/>
 
 Figure 1: Naive CPU 50x50 pixel region matching across RGB images
