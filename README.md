@@ -2,12 +2,14 @@
 Nishad Gothoskar and Cyrus Tabrizi
 
 <img src="images/frontlidar.png" alt="Front-facing view of LIDAR data" class="inline"/>
+
 Figure 1: Front-facing view of LIDAR data
 
 ## Summary
 We are implementing GPU-accelerated, particle-based Simultaneous Localization and Mapping (SLAM) for use in autonomous vehicles. We're using techniques from 15-418 and probabilistic robotics to process 3D LIDAR point clouds and IMU data (acceleration and rotation) from the [KITTI Vision Benchmark Suite](http://www.cvlibs.net/datasets/kitti/) in a way that improves both localization and mapping accuracy.
 
 <img src="http://www.cvlibs.net/datasets/kitti/images/passat_sensors.jpg" alt="Picture of the KITTI mapping vehicle " class="inline"/>
+
 Figure 2: Picture of the KITTI mapping vehicle
 
 ## Major Challenges
@@ -56,6 +58,7 @@ The steps for SLAM are as follows:
 The first step was learning the SLAM algorithm enough to first implement it all correctly from scratch. This is a necessary prerequisite to doing it in parallel. Since the problem is mostly the same in 1 dimension as it is in 3 dimensions, we first wrote a particle-based SLAM simulator in Python before moving to 3 dimensions and C++.
 
 <img src="images/1Dsim.png" alt="Screenshot from SLAM simulation in 1D" class="inline"/>
+
 Figure 3: Screenshot from SLAM simulation in 1D
 
 Simultaneously, we needed to figure out how to work with the KITTI dataset. This involves being able to read and manipulate the IMU and LIDAR data. The following shows visualizations of two LIDAR scans which have been realigned into the original reference frame. After this realignment (which includes IMU error), we were able to merge the two point clouds. The following shows that we properly transformed the data in 6 dimensions (translation and rotation in 3D).
