@@ -31,7 +31,7 @@ The steps for SLAM are as follows:
 
 
 3. Retrieve the IMU and gyro data
-	1.Remember! Relying only on IMU and gyro data introduces drift into our map.
+	1. Remember! Relying only on IMU and gyro data introduces drift into our map.
 
 
 4. Retrieve the timing data
