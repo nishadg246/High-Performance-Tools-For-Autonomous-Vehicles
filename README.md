@@ -25,22 +25,28 @@ The steps for SLAM are as follows:
 	1. Each particle represents a possible pose for the vehicle
 	2. On the first time step, set every particle to (0,0,0,0,0,0)
 
+
 2. Retrieve the LIDAR data
 	1. Each scan contains roughly 100,000+ points
 
+
 3. Retrieve the IMU and gyro data
 	1.Remember! Relying only on IMU and gyro data introduces drift into our map.
+
 
 4. Retrieve the timing data
 	1. The sensor measurements are recorded at roughly 10Hz
 	2. We need to know the exact timing intervals to reduce error
 
+
 5. Offset each particle pose by the measured IMU and timing data
 	1. We want the particles to be an estimate of where the vehicle currently is
+
 
 6. Offset each particle pose by a normal distribution
 	1. We'd use an actual error distribution for the timers, IMU's etc. if we had one
 	2. Instead, we approximate the error as being gaussian
+
 
 7. Now we use each particle pose to transform the LIDAR data back into the original reference frame
 
