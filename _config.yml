@@ -1,3 +1,3 @@
 theme: jekyll-theme-cayman
-title: Simultaneous Localization and Mapping for Autonomous Vehicles
+title: Particle-based SLAM for Autonomous Vehicles
 description: A parallel particle-based SLAM implementation for the 15-418 Parallelism Competition (Spring 2017)
