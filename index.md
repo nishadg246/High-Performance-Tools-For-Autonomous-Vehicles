@@ -10,7 +10,7 @@ Figure 1: Naive CPU 50x50 pixel region matching across RGB images
 ## Summary
 We are going to build a set of parallel visual-computing tools for doing realtime processing of autonomous vehicle sensor data. The ability to efficiently process multiple streams of video and depth data in real-time is critical to the improved safety and performance of autonomous vehicles. Our suite will create versions of these algorithms specifically optimized for parallel operation in this compute-constrained environment.
 
-## Backround
+## Background
 Autonomous vehicles use a number of RGB cameras and depth sensors to perceive the world around them. To make sense of all this data, a vehicle’s onboard computer passes each stream of sensor data through a real-time processing pipeline composed of both high-level and low-level stages. While the specifics will vary by vehicle, there are many low-level algorithms that are common across many contexts. 
 The goal of our project is to implement a small set of these low-level algorithms in a way that leverages GPU hardware efficiently and satisfies the real-time constraints of an autonomous vehicle. There are examples of image-processing libraries (like OpenCV, VisionWorks) that are performant in both CPU and GPU-based environments, but we’re interested in applying our own understanding of CUDA and GPU architecture to implement these algorithms as best as we can.
 
