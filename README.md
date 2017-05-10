@@ -58,9 +58,9 @@ Figure 3: Screenshot from SLAM simulation in 1D
 
 Simultaneously, we needed to figure out how to work with the KITTI dataset. This involves being able to read and manipulate the IMU and LIDAR data. The following shows visualizations of two LIDAR scans which have been realigned into the original reference frame. After this realignment (which includes IMU error), we were able to merge the two point clouds. The following shows that we properly transformed the data in 6 dimensions (translation and rotation in 3D).
 
-<img src="images/lidar1.png" width="250"/>
-<img src="images/lidar2.png" width="250"/>
-<img src="images/lidar1and2.png" width="250"/>
+<img src="images/lidar1.png" width="250" height="190"/>
+<img src="images/lidar2.png" width="250" height="190"/>
+<img src="images/lidar1and2.png" width="250" height="190"/>
 
 Figure 4: Merging of two lidar scans
 
