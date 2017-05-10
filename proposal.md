@@ -2,8 +2,8 @@
 layout: default
 ---
 
-### 15-418 Final Project Proposal
-##High Performance Video Processing Suite For Autonomous Vehicles
+# 15-418 Final Project Proposal
+## High Performance Video Processing Suite For Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
 <img src="images/screen1.png" alt="hi" class="inline"/>
