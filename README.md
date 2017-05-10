@@ -76,6 +76,8 @@ Simultaneously, we needed to figure out how to work with the KITTI dataset. This
 Figure 4: Merging of two lidar scans
 
 ## What to look forward to on Friday
--Maps we've built from the KITTI dataset
--Plots of vehicle trajectory with and without SLAM
--A video showing the construction of the map as the vehicle moves through the scene
+1. Maps we've built from the KITTI dataset
+
+2. Plots of vehicle trajectory with and without SLAM
+
+3. A video showing the construction of the map as the vehicle moves through the scene
