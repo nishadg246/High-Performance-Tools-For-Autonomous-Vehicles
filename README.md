@@ -1,4 +1,4 @@
-### Simultaneous Localization and Mapping for Autonomous Vehicles
+### Particle-based SLAM for Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
 <img src="images/frontlidar.png" alt="Front-facing view of LIDAR data" class="inline"/>
