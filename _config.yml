@@ -1,7 +1,1 @@
-theme: jekyll-theme-tactile
-
-nav:
-  - name:           "About"
-    url:            "/site/about"
-  - name:           "Checkpoint"
-    url:            "/site/checkpoint"
+theme: jekyll-theme-cayman
