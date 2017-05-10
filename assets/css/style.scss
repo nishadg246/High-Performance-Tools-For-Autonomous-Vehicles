@@ -3,6 +3,4 @@
 
 @import "{{ site.theme }}";
 
-.project-name {
-    font-size: 2.25rem;
-}
+@media screen and (min-width: 64em) { .project-name { font-size: 5.25rem; } }
