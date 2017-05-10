@@ -2,6 +2,6 @@ theme: jekyll-theme-tactile
 
 nav:
   - name:           "About"
-    url:            "/about"
+    url:            "/site/about"
   - name:           "Checkpoint"
-    url:            "/checkpoint"
+    url:            "/site/checkpoint"
