@@ -103,17 +103,13 @@ Note: The Eigen library was used for Matrix-Matrix and Matrix-Vector operations
 
 Preliminary Timing Results (Averaged over 10 runs)
 
-|   # of Points    | Time (seconds) |   Time (ms)    |  
-|                  |   to complete  |      per       |  
-|                  |   entire set   |     point      |  
-|------------------|----------------|-----------------
-|       10^3       |    0.220224    |    0.220224    |  
-|       10^4       |    0.223580    |    0.022358    |  
-|       10^5       |    0.227155    |    0.002271    |  
-|       10^6       |    0.247954    |    0.000247    |  
-|       10^7       |    0.374841    |    0.000037    | 
-|       10^8       |  out of memory |  out of memory |  
+<img src="images/transform_speeds.png"/>
 
+Figure 8: Speed analysis for fused transform generation in CUDA
+
+There's negligible speedup as the blocksize changes. This makes sense since there's no relationship between particles processed in the same block and the work is uniform across threads (feature no branching or early termination case, except for when indices are out of bounds).
+
+With respect to the speedup observed with the change in workload size, this can largely be attributed to the GPU being underused for smaller workloads. As the workload approaches the maximum number of blocks each SM can execute at once, blocks begins to sit in the queue and the main source of speedup goes away.
 
 ## What to look forward to on Friday
 1. Maps we've built from the KITTI dataset
