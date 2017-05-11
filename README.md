@@ -1,6 +1,8 @@
 ### Particle-based SLAM for Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
+##Updated on 5/11 at 7:24 AM. Added additional preliminary results
+
 <img src="images/frontlidar.png" alt="Front-facing view of LIDAR data" class="inline"/>
 
 Figure 1: Front-facing view of LIDAR data
@@ -78,6 +80,40 @@ Simultaneously, we needed to figure out how to work with the KITTI dataset. This
 <img src="images/lidar1and2.png" width="250" height="190"/>
 
 Figure 5: Merging of two lidar scans
+
+The above, however, was done sequentially in Python. After using the starter code to figure out how to read the data logs and manipulate the data correctly, we wrote a CUDA-based parallel implementation that produces the same transformations.
+
+<img src="images/python_transform.png" width="250" height="190"/>
+
+Figure 6: Python transformation matrix
+
+<img src="images/cpp_transform.png" width="250" height="190"/>
+
+Figure 7: CUDA transformation matrix
+
+To parallelize the above, two kernels were written. 
+
+In the first kernel, the rotation matrix is obtained. This matrix is composed from three separate roll, pitch and yaw matrices (Rx, Ry and Rz). To generate each of these three matrices, the three input angle values must first be padded with an angle error from a gaussian distribution. Then through some standard matrix math, the composed rotation matrix is made and is saved in the particle's transform field.
+
+In the second kernel, the full transformation will be generated. First, the velocities are padded with velocity errors from a gaussian distribution. These velocities are then multiplied by a 'dt' to get the approximate distance travelled in that step. This delta is then rotated from the vehicle's new reference frame to the global one using the rotation matrix from the first kernel. Now that the offset delta is known in global coordinates, it is added to the previous known location. This new position is used to add a translation column to the 4x4 homogenous transform matrix, completing the transform.
+
+To achieve the above also required implementing noise lookup tables. Taking inspiration from the circleRenderer assignment, 6 different index tables were installed in addition to a table for a Normal distribution. The index tables hash the thread index into a uniformly shuffled array of indices from 0 to 255. These indices then map the thread to a value sampled from a Normal(0,1) distribution.
+
+Note: The Eigen library was used for Matrix-Matrix and Matrix-Vector operations
+
+Preliminary Timing Results (Averaged over 10 runs)
+
+|   # of Points    | Time (seconds) |   Time (ms)    |  
+|                  |   to complete  |      per       |  
+|                  |   entire set   |     point      |  
+|------------------|----------------|-----------------
+|       10^3       |    0.220224    |    0.220224    |  
+|       10^4       |    0.223580    |    0.022358    |  
+|       10^5       |    0.227155    |    0.002271    |  
+|       10^6       |    0.247954    |    0.000247    |  
+|       10^7       |    0.374841    |    0.000037    | 
+|       10^8       |  out of memory |  out of memory |  
+
 
 ## What to look forward to on Friday
 1. Maps we've built from the KITTI dataset
