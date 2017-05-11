@@ -444,7 +444,7 @@ def main(num_particles, vel_actual_hist, vel_measured, vel_particle_error, obsta
 		for i in xrange(50):
 			drawActualState(X_new)
 
-		#g.waitForClick()
+		g.waitForClick()
 		p_history += [p_old]
 
 
@@ -456,7 +456,7 @@ error5 = {-10:0.125,0:0.75,10:0.125}
 
 bias1 = {-20:0.5,-10:0.25,0:0.125,10:0.125,20:0.0}
 
-gen1 = getGaussDist(bin_size=7.0,m_range=50.0,precision=1000,variance=None)
+gen1 = getGaussDist(bin_size=5.0,m_range=50.0,precision=1000,variance=None)
 
 no_error = {0:1.0}
 vel_measurement_error = [bias1]

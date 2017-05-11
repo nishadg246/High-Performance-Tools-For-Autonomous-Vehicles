@@ -96,6 +96,10 @@ class graphics_1D:
 		p0 = self.getPoint(obs[0]-20,-self.win_height/2)
 		p1 = self.getPoint(obs[1]+20,self.win_height/2)
 		self.drawRectangleFromPoints(p0,p1,'white','white')
+
+		p2 = self.getPoint(-self.win_width/2,(self.win_height/2)-20)
+		p3 = self.getPoint((-self.win_width/2)+20,self.win_height/2)
+		self.drawRectangleFromPoints(p2,p3,'white','white')
 		self.drawLine(-self.win_width/2,0,self.win_width/2,0)
 		self.drawObstacles(obs)
 		#self.drawAxisMarkers()

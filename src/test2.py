@@ -103,89 +103,92 @@ times = []
 count=0
 positions = []
 velo = g1.next()
-#points = []
-#raw=[]
-#with open("./oxts/timestamps.txt", 'r') as f:
-#    for line in f.readlines():
-#       times.append(datetime.strptime(line[:-4],"%Y-%m-%d %H:%M:%S.%f"))
-#for filename in oxts_files:
-#    with open(filename, 'r') as f:
-#        for line in f.readlines():
-#            line = line.split()
-#            # Last five entries are flags and counts
-#            line[:-5] = [float(x) for x in line[:-5]]
-#            line[-5:] = [int(float(x)) for x in line[-5:]]
-#            if (count>0 and count<len(times)):
-#                data = g1.next()
-#                data[:,3]=1
-#                packet = OxtsPacket(*line)
-#                d = (times[count]-times[count-1])
-#                pos[0]+= packet.ve * d.microseconds / 1000000
-#                pos[1]+= packet.vn * d.microseconds / 1000000
-#                positions.append(pos.tolist())
-#                R = pose_from_oxts_packet(packet)
-#                T_w_imu = transform_from_rot_trans(R, pos)
-#                points.append((T_w_imu.dot(data.transpose())).transpose())
-#                #points.append(data)
-#                #for i in data:
-#                #    freq[pos[0]+i[0]*4+500][pos[1]+i[1]*4+500][i[2]*4+500]+=1
-#            count+=1
-#            print count
-#
-#t = np.concatenate((points[0],points[100]), axis=0)
-#np.random.shuffle(t)
-# a = freq
-# a [a<100]=0
-# x,y,z = a.nonzero()
-# fig = plt.figure()
-# ax = fig.add_subplot(111, projection='3d')
-# ax.scatter(x,y,z, zdir='z', c= 'red')
-# plt.show()
-
-velopoints = [i for i in range(velo.shape[0]) if velo[i,2]>-1.7]
 
 
-def show(velo,skip):
-    velo_range = range(0, velo.shape[0], skip)
-    fig = mayavi.mlab.figure(bgcolor=(0, 0, 0), size=(640, 360))
-    mayavi.mlab.points3d(
-        velo[velo_range, 0],   # x
-        velo[velo_range, 1],   # y
-        velo[velo_range, 2],   # z
-        velo[velo_range, 2],   # Height data used for shading
-        mode="point", # How to render each point {'point', 'sphere' , 'cube' }
-        colormap='spectral',  # 'bone', 'copper',
-        #color=(0, 1, 0),     # Used a fixed (r,g,b) color instead of colormap
-        scale_factor=100,     # scale of the points
-        line_width=10,        # Scpale of the line, if any
-        figure=fig,
-    )
-    # velo[:, 3], # reflectance values
-    mayavi.mlab.show()
-show(velo[velopoints,:],1)
-fig = mayavi.mlab.figure(bgcolor=(0, 0, 0), size=(640, 360))
-plt = mayavi.mlab.points3d(
-        velo[:, 0],   # x
-        velo[:, 1],   # y
-        velo[:, 2],   # z
-        velo[:, 2],   # Height data used for shading
-        mode="point", # How to render each point {'point', 'sphere' , 'cube' }
-        colormap='spectral',  # 'bone', 'copper',
-        #color=(0, 1, 0),     # Used a fixed (r,g,b) color instead of colormap
-        scale_factor=100,     # scale of the points
-        line_width=10,        # Scpale of the line, if any
-        figure=fig,
-    )
 
-msplt = plt.mlab_source
-@mayavi.mlab.animate(delay=100)
-def anim():
-    while True:
-        velo = g1.next()
-        msplt.set(x=velo[:,0],y= velo[:,1], z=velo[:,2])
-        yield
+points = []
+raw=[]
+with open("./oxts/timestamps.txt", 'r') as f:
+   for line in f.readlines():
+      times.append(datetime.strptime(line[:-4],"%Y-%m-%d %H:%M:%S.%f"))
+for filename in oxts_files:
+   with open(filename, 'r') as f:
+       for line in f.readlines():
+           line = line.split()
+           # Last five entries are flags and counts
+           line[:-5] = [float(x) for x in line[:-5]]
+           line[-5:] = [int(float(x)) for x in line[-5:]]
+           if (count>0 and count<len(times)):
+               data = g1.next()
+               data[:,3]=1
+               packet = OxtsPacket(*line)
+               d = (times[count]-times[count-1])
+               pos[0]+= packet.ve * d.microseconds / 1000000
+               pos[1]+= packet.vn * d.microseconds / 1000000
+               positions.append(pos.tolist())
+               R = pose_from_oxts_packet(packet)
+               T_w_imu = transform_from_rot_trans(R, pos)
+               points.append((T_w_imu.dot(data.transpose())).transpose())
+               #points.append(data)
+               #for i in data:
+               #    freq[pos[0]+i[0]*4+500][pos[1]+i[1]*4+500][i[2]*4+500]+=1
+           count+=1
+           print count
 
-anim()
-mayavi.mlab.show()
-#show(t,1)
+t = np.concatenate((points[0],points[100]), axis=0)
+np.random.shuffle(t)
+a = freq
+a [a<100]=0
+x,y,z = a.nonzero()
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(x,y,z, zdir='z', c= 'red')
+plt.show()
+
+# velopoints = [i for i in range(velo.shape[0]) if velo[i,2]>-1.7]
+
+
+# def show(velo,skip):
+#     velo_range = range(0, velo.shape[0], skip)
+#     fig = mayavi.mlab.figure(bgcolor=(0, 0, 0), size=(640, 360))
+#     mayavi.mlab.points3d(
+#         velo[velo_range, 0],   # x
+#         velo[velo_range, 1],   # y
+#         velo[velo_range, 2],   # z
+#         velo[velo_range, 2],   # Height data used for shading
+#         mode="point", # How to render each point {'point', 'sphere' , 'cube' }
+#         colormap='spectral',  # 'bone', 'copper',
+#         #color=(0, 1, 0),     # Used a fixed (r,g,b) color instead of colormap
+#         scale_factor=100,     # scale of the points
+#         line_width=10,        # Scpale of the line, if any
+#         figure=fig,
+#     )
+#     # velo[:, 3], # reflectance values
+#     mayavi.mlab.show()
+# show(velo[velopoints,:],1)
+# fig = mayavi.mlab.figure(bgcolor=(0, 0, 0), size=(640, 360))
+# plt = mayavi.mlab.points3d(
+#         velo[:, 0],   # x
+#         velo[:, 1],   # y
+#         velo[:, 2],   # z
+#         velo[:, 2],   # Height data used for shading
+#         mode="point", # How to render each point {'point', 'sphere' , 'cube' }
+#         colormap='spectral',  # 'bone', 'copper',
+#         #color=(0, 1, 0),     # Used a fixed (r,g,b) color instead of colormap
+#         scale_factor=100,     # scale of the points
+#         line_width=10,        # Scpale of the line, if any
+#         figure=fig,
+#     )
+
+# msplt = plt.mlab_source
+# @mayavi.mlab.animate(delay=100)
+# def anim():
+#     while True:
+#         velo = g1.next()
+#         msplt.set(x=velo[:,0],y= velo[:,1], z=velo[:,2])
+#         yield
+
+# anim()
+# mayavi.mlab.show()
+# #show(t,1)
 
