@@ -83,11 +83,11 @@ Figure 5: Merging of two lidar scans
 
 The above, however, was done sequentially in Python. After using the starter code to figure out how to read the data logs and manipulate the data correctly, we wrote a CUDA-based parallel implementation that produces the same transformations.
 
-<img src="images/python_transform.png" width="250" height="190"/>
+<img src="images/python_transform.png"/>
 
 Figure 6: Python transformation matrix
 
-<img src="images/cpp_transform.png" width="250" height="190"/>
+<img src="images/cuda_transform.png"/>
 
 Figure 7: CUDA transformation matrix
 
