@@ -1,7 +1,7 @@
 ### Particle-based SLAM for Autonomous Vehicles
 Nishad Gothoskar and Cyrus Tabrizi
 
-##Updated on 5/12 at 11:45 PM. Final report is available <a href="images/15-418_Final_Report.pdf">here</a>
+##Updated on 5/12 at 11:45 PM. Final report is available <a href="images/15-418_Final_Report.pdf">here (images/15-418_Final_Report.pdf)</a>
 
 ##Updated on 5/11 at 7:24 AM. Added additional preliminary results
 
