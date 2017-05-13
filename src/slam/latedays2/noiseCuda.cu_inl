@@ -1,0 +1,74 @@
+
+// included by fastRenderer.cu
+
+
+
+//returns val sampled from uniform distribution between -1.0 and 1.0
+
+// __device__ __inline__ float
+// cudaFloat1DUniformNoise(int thread_ID)
+// {
+//     int hash = cuConstShuffledIndexTable[ (thread_ID) & 0xFF ];
+//     hash = cuConstShuffledIndexTable[ (thread_ID) & 0xFF ];
+//     hash = cuConstShuffledIndexTable[ (thread_ID) & 0xFF ];
+//     float result = cuConstNoise1DUniformTable[ hash ];
+//     return result;
+// }
+
+// __device__ __inline__ float
+// cudaFloat1DNormalNoise(int thread_ID)
+// {
+//     int hash = cuConstShuffledIndexTable[ (thread_ID) & 0xFF ];
+//     hash = cuConstShuffledIndexTable[ (thread_ID) & 0xFF ];
+//     hash = cuConstShuffledIndexTable[ (thread_ID) & 0xFF ];
+//     float result = cuConstNoise1DNormalTable[ hash ];
+//     return result;
+// }
+
+__device__ __inline__ float
+cudaGetXNoise(int thread_ID)
+{
+    int hash = cuConstShuffledTableX[ (thread_ID) & 0xFF ];
+    float result = cuConstNoise1DNormalTable[ hash ];
+    return result;
+}
+
+__device__ __inline__ float
+cudaGetYNoise(int thread_ID)
+{
+    int hash = cuConstShuffledTableY[ (thread_ID) & 0xFF ];
+    float result = cuConstNoise1DNormalTable[ hash ];
+    return result;
+}
+
+__device__ __inline__ float
+cudaGetZNoise(int thread_ID)
+{
+    int hash = cuConstShuffledTableZ[ (thread_ID) & 0xFF ];
+    float result = cuConstNoise1DNormalTable[ hash ];
+    return result;
+}
+
+__device__ __inline__ float
+cudaGetRollNoise(int thread_ID)
+{
+    int hash = cuConstShuffledTableRoll[ (thread_ID) & 0xFF ];
+    float result = cuConstNoise1DNormalTable[ hash ];
+    return result;
+}
+
+__device__ __inline__ float
+cudaGetPitchNoise(int thread_ID)
+{
+    int hash = cuConstShuffledTablePitch[ (thread_ID) & 0xFF ];
+    float result = cuConstNoise1DNormalTable[ hash ];
+    return result;
+}
+
+__device__ __inline__ float
+cudaGetYawNoise(int thread_ID)
+{
+    int hash = cuConstShuffledTableYaw[ (thread_ID) & 0xFF ];
+    float result = cuConstNoise1DNormalTable[ hash ];
+    return result;
+}
